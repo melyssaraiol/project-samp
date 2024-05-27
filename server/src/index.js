@@ -6,6 +6,7 @@ import authRouter from './auth/authController.js'
 import passport from './auth/passportConfig.js'
 import usersRouter from './routes/usersRoutes.js'
 import bnmpRouter from './routes/bnmpRoutes.js'
+import funcionarioRouter from './routes/funcionarioRoutes.js'
 
 
 config()
@@ -44,6 +45,7 @@ async function main() {
     app.use('/auth', authRouter)
     app.use('/users', usersRouter)
     app.use('/bnmp', bnmpRouter)
+    app.use('/funcionario', funcionarioRouter)
 
 
 
