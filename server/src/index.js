@@ -2,6 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import { Mongo } from './config/database.js'
 import { config } from 'dotenv'
+import authRouter from './auth/authController.js'
+import passport from './auth/passportConfig.js'
 
 config()
 
@@ -23,6 +25,7 @@ async function main() {
     // Middleware
     app.use(express.json())
     app.use(cors())
+    app.use(passport.initialize())
 
      // Rota raiz
      app.get('/', (req, res) => {
@@ -32,6 +35,10 @@ async function main() {
             body: 'Welcome to SAMP!'
         })
     })
+
+
+    // Routes
+    app.use('/auth', authRouter)
 
     // Inicia o servidor
     const server = app.listen(port, () => {
