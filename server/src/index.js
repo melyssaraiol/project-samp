@@ -4,6 +4,8 @@ import { Mongo } from './config/database.js'
 import { config } from 'dotenv'
 import authRouter from './auth/authController.js'
 import passport from './auth/passportConfig.js'
+import usersRouter from './routes/usersRoutes.js'
+
 
 config()
 
@@ -39,6 +41,8 @@ async function main() {
 
     // Routes
     app.use('/auth', authRouter)
+    app.use('/users', usersRouter)
+
 
     // Inicia o servidor
     const server = app.listen(port, () => {
